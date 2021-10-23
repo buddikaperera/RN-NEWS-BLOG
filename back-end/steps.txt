@@ -1,0 +1,18 @@
+npm init  -y
+
+npm i express --save
+npm i nodemon --save-dev
+create a file index.js 
+
+npm i --save express-validator 
+node index.js 
+
+craete public file and keep the index.htrml file
+
+package.json 
+
+under script add
+"start"":"nodemon index.js"
+
+npm install multer for image uploads
+resize images  sharp
