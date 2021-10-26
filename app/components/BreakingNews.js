@@ -1,15 +1,15 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import BlockCard from './BlockCard';
+import HorizontalList from './HorizontalList';
 
-const FeaturedNews = ({item}) => {
+const BreakingNews = ({data}) => {
   return (
     <View>
-      <BlockCard item={item} style={{marginVertical: 15}} />
+      <HorizontalList title="Breaking News" data={data} />
     </View>
   );
 };
 
-export default FeaturedNews;
+export default BreakingNews;
 
 const styles = StyleSheet.create({});

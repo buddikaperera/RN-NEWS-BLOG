@@ -1,8 +1,8 @@
 import React from 'react';
-import {StyleSheet, Text, View, StatusBar} from 'react-native';
+import {StyleSheet, Text, View, StatusBar, ScrollView} from 'react-native';
 
 const Screen = ({children}) => {
-  return <View style={styles.container}>{children}</View>;
+  return <ScrollView style={styles.container}>{children}</ScrollView>;
 };
 
 export default Screen;
