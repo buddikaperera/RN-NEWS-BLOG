@@ -3,40 +3,30 @@ import {Text, View, StyleSheet} from 'react-native';
 import Screen from './app/components/Screen';
 import NewsApi from './api/NewsApi';
 
+import SearchBar from './app/components/SearchBar';
+import FeaturedNews from './app/components/FeaturedNews';
+import BreakingNews from './app/components/BreakingNews';
+import EntertainmentNews from './app/components/EntertainmentNews';
+import PoliticalNews from './app/components/PoliticalNews';
+import TechNews from './app/components/TechNews';
+import useNews from './app/hooks/useNews';
+
 const App = () => {
-  const [featuredNews, setFeaturedNews] = useState({});
-  const [BreakingNews, setBreakingNews] = useState([]);
-  const [politicalNews, setPoliticalNews] = useState([]);
-  const [techNews, setTechNews] = useState([]);
-  const [entertainmentNews, setEntertainmentNews] = useState([]);
-
-  const filterFeatured = data => {
-    return [...data].filter(item => item.featured === 'on').reverse()[0];
-  };
-
-  const filterByCategory = (data, category) => {
-    return [...data].filter(item => item.category === category);
-  };
-
-  const filterMultipleNews = async () => {
-    const allNews = await NewsApi.getAll();
-    // const featured = allNews
-    //   .filter(item => item.featured === 'on')
-    //   .reverse()[0];
-    //setFeaturedNews(featured);
-    setFeaturedNews(filterFeatured(allNews));
-    setBreakingNews(filterByCategory(allNews, 'breaking-news'));
-    setPoliticalNews(filterByCategory(allNews, 'political'));
-    setTechNews(filterByCategory(allNews, 'tech'));
-    setEntertainmentNews(filterByCategory(allNews, 'entertainment'));
-  };
-
-  useEffect(() => {
-    filterMultipleNews();
-  }, []);
+  const [
+    featuredNews,
+    breakingNews,
+    politicalNews,
+    techNews,
+    entertainmentNews,
+  ] = useNews();
   return (
     <Screen>
-      <Text>{JSON.stringify(featuredNews)}</Text>
+      <SearchBar />
+      <FeaturedNews item={featuredNews} />
+      <BreakingNews data={breakingNews} />
+      <PoliticalNews data={politicalNews} />
+      <TechNews data={techNews} />
+      <EntertainmentNews data={entertainmentNews} />
     </Screen>
   );
 };
