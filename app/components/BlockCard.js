@@ -1,23 +1,31 @@
 import React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {
+  Image,
+  StyleSheet,
+  Text,
+  View,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import SubTitle from './SubTitle';
-import Title from './Title';
+import Title from './common/Title';
 
-const BlockCard = ({style, imageStyle, item}) => {
+const BlockCard = ({style, imageStyle, item, onPress}) => {
   const {thumbnail, desc, title} = item;
 
   return (
-    <View style={[styles.container, style]}>
-      <Image
-        source={{uri: thumbnail}}
-        style={[styles.imgContainer, imageStyle]}
-      />
-      <View style={styles.contentContainer}>
-        <Title>{title}</Title>
+    <TouchableWithoutFeedback onPress={onPress}>
+      <View style={[styles.container, style]}>
+        <Image
+          source={{uri: thumbnail}}
+          style={[styles.imgContainer, imageStyle]}
+        />
+        <View style={styles.contentContainer}>
+          <Title>{title}</Title>
 
-        <SubTitle>{desc}</SubTitle>
+          <SubTitle>{desc}</SubTitle>
+        </View>
       </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 };
 

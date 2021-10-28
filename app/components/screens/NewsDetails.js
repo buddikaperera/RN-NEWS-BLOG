@@ -14,7 +14,7 @@ const NewsDetails = () => {
     <ScrollView style={styles.container}>
       <Image
         style={styles.image}
-        source={require('../../app/assets/images/test.jpg')}
+        source={require('../../assets/images/test.jpg')}
       />
       <View style={styles.contentContainer}>
         <Text style={styles.title}>Heading</Text>
