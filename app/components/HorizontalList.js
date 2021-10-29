@@ -2,8 +2,12 @@ import React from 'react';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
 import SmallCard from './SmallCard';
 import Title from './common/Title';
+import {useNavigation} from '@react-navigation/core';
+import {NewsDetails} from 'app/components/NewsDetails';
 
 const HorizontalList = ({title, data}) => {
+  const navigation = useNavigation();
+
   return (
     <React.Fragment>
       <Title size={20}>{title}</Title>
@@ -13,7 +17,12 @@ const HorizontalList = ({title, data}) => {
           keyExtractor={item => item.id}
           horizontal
           showsHorizontalScrollIndicator={false}
-          renderItem={({item}) => <SmallCard item={item} />}
+          renderItem={({item}) => (
+            <SmallCard
+              onPress={() => navigation.push('NewsDetails', {item})}
+              item={item}
+            />
+          )}
         />
       </View>
     </React.Fragment>

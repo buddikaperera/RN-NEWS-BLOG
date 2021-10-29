@@ -2,19 +2,22 @@ import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import SubTitle from './SubTitle';
 import Title from './common/Title';
+import {TouchableWithoutFeedback} from 'react-native-gesture-handler';
 
-const FlatCard = ({item}) => {
+const FlatCard = ({item,onPress}) => {
   const {thumbnail, desc, title} = item;
 
   return (
-    <View style={styles.container}>
-      <Image source={{uri: thumbnail}} style={styles.image} />
-      <View style={styles.contentContainer}>
-        <Title>{title}</Title>
+    <TouchableWithoutFeedback onPress={onPress}>
+      <View style={styles.container}>
+        <Image source={{uri: thumbnail}} style={styles.image} />
+        <View style={styles.contentContainer}>
+          <Title>{title}</Title>
 
-        <SubTitle>{desc}</SubTitle>
+          <SubTitle>{desc}</SubTitle>
+        </View>
       </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 };
 

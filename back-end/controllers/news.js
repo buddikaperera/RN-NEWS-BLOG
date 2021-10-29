@@ -27,7 +27,7 @@ const createNews = async (req, res) => {
 };
 
 const getAllNews = async (req, res) => {
-  console.log('getAllNews');
+ // console.log('getAllNews');
   try {
     const data = await news.getAll();
     res.json({success: true, news: data});

@@ -8,6 +8,7 @@ import PoliticalNews from '../PoliticalNews';
 import Screen from '../Screen';
 import SearchBar from '../SearchBar';
 import TechNews from '../TechNews';
+import ActivityIndicator from '../common/ActivityIndicator';
 
 const Home = () => {
   const [
@@ -16,16 +17,20 @@ const Home = () => {
     politicalNews,
     techNews,
     entertainmentNews,
+    loading,
   ] = useNews();
   return (
-    <Screen>
-      <SearchBar />
-      <FeaturedNews item={featuredNews} />
-      <BreakingNews data={breakingNews} />
-      <PoliticalNews data={politicalNews} />
-      <TechNews data={techNews} />
-      <EntertainmentNews data={entertainmentNews} />
-    </Screen>
+    <React.Fragment>
+      <ActivityIndicator visible={loading} />
+      <Screen>
+        <SearchBar />
+        <FeaturedNews item={featuredNews} />
+        <BreakingNews data={breakingNews} />
+        <PoliticalNews data={politicalNews} />
+        <TechNews data={techNews} />
+        <EntertainmentNews data={entertainmentNews} />
+      </Screen>
+    </React.Fragment>
   );
 };
 

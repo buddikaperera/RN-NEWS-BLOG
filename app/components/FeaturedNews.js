@@ -8,7 +8,7 @@ const FeaturedNews = ({item}) => {
   return (
     <View>
       <BlockCard
-        onPress={() => navigation.navigate('NewsDetails')}
+        onPress={() => navigation.navigate('NewsDetails', {item: item})}
         item={item}
         style={{marginVertical: 15}}
       />
